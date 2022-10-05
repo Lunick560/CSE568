@@ -1,0 +1,9 @@
+<launch>
+	<node name="stage" pkg="stage_ros" type="stageros"
+		      args="$(find lab1)/world/playground2.world" />
+	<node name="evader" pkg="lab1" type="evader_controller.py">
+	<remap from="/base_scan" to="robot_0/base_scan" />
+	<remap from="/cmd_vel" to="robot_0/cmd_vel" />
+	</node>
+	<node name="pursuer" pkg="lab1" type="pursuer_evader.py"/>
+</launch>
